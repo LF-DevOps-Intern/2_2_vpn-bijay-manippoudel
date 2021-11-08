@@ -17,3 +17,12 @@
     - Copied the easy rsa version 2 in the open vpn folfer 
     - Reference Picture(easy_rsa_installation.png)
 
+    - For Certificate Generation:
+        - Reference Picture (certificate_generate_1.png)
+        - Reference Picture (certificate_generate_2.png)
+        - Reference Picture (certificate_keys_client_server.png)
+
+
+
+
+
