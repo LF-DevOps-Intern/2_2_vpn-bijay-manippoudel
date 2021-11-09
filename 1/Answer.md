@@ -22,7 +22,37 @@
         - Reference Picture (certificate_generate_2.png)
         - Reference Picture (certificate_keys_client_server.png)
 
++ For routing the packets.
+    ```
+    # To add openvpn service permanently to Trusted zone.
+    sudo firewall-cmd --zone=trusted --add-service openvpn --permanent
 
+    # To get the list of all the trusted zones.
+    sudo firewall-cmd --list-services --zone=trusted
+
+    # Masquerade Permanently
+    sudo firewall-cmd --permanent --add-masquerade
+
+    # Adding the routing rule. (Reference Picture vpn_masquerade.png)
+    sudo firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s 10.8.0.0/24 -o 192.168.1.67 -j MASQUERADE
+
+
+
+    # NOTE: We should always reload firewall after any changes to the firewall setting using:
+    sudo firewall-cmd --reload
+
+    # Reload the openvpn server after the server.conf file is changed.
+    systemctl restart openvpn-server@server.service
+
+    # Renamed the openssl file
+    cp /etc/openvpn/easy-rsa/openssl-1.0.0.cnf /etc/openvpn/easy-rsa/openssl.cnf
+    
+    #Static key generation (Encryption Key)
+
+    sudo openvpn --genkey --secret /etc/openvpn/user.tlsauth
+
+
+    ```
 
 
 
