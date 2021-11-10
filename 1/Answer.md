@@ -51,7 +51,6 @@
 
     sudo openvpn --genkey --secret /etc/openvpn/user.tlsauth
 
-
     ```
 
 
